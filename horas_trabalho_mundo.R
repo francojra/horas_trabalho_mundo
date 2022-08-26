@@ -61,4 +61,5 @@ ggplot(ht1, aes(x = fct_reorder(Entity, media), y = media,
   scale_fill_manual(values = as.vector(alphabet(11))) +
   coord_flip() +
   labs(x = "Países", y = "Tempo médio de trabalho (horas)") +
-  theme_bw(base_size = 14)
+  theme_bw(base_size = 14) +
+  theme(legend.position = "none")

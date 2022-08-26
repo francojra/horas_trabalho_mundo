@@ -63,3 +63,10 @@ ggplot(ht1, aes(x = fct_reorder(Entity, media), y = media,
   labs(x = "Países", y = "Tempo médio de trabalho (horas)") +
   theme_bw(base_size = 14) +
   theme(legend.position = "none")
+
+ggplot(ht2, aes(x = Year, y = horas, group = Entity, col = Entity)) +
+  geom_line(size = 1.4) +
+  scale_color_manual(values = as.vector(alphabet(11))) +
+  labs(x = "Anos", y = "Tempo médio de trabalho (horas)",
+       color = "Países") +
+  theme_bw(base_size = 14) 

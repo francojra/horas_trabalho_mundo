@@ -18,6 +18,7 @@
 # Pacotes necessários para as análises -----------------------------------------------------------------------------------------------------
 
 library(tidyverse)
+library(pals)
 
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
@@ -48,3 +49,16 @@ ht2 <- ht %>%
                        "Ghana", "India", "Haiti", "Hungary", 
                        "Iceland", "Israel", "Portugal", "Italy")) %>%
   view()
+
+# Gráficos ---------------------------------------------------------------------------------------------------------------------------------
+
+ggplot(ht1, aes(x = fct_reorder(Entity, media), y = media, 
+                fill = Entity)) +
+  geom_col() +
+  geom_errorbar(aes(x = Entity, y = media,
+                    ymin = media - se, ymax = media + se),
+                size = 0.8, width = 0.3) +
+  scale_fill_manual(values = as.vector(alphabet(11))) +
+  coord_flip() +
+  labs(x = "Países", y = "Tempo médio de trabalho (horas)") +
+  theme_bw(base_size = 14)

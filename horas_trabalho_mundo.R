@@ -19,6 +19,7 @@
 
 library(tidyverse)
 library(pals)
+library(RColorBrewer)
 
 # Carregar dados ---------------------------------------------------------------------------------------------------------------------------
 
@@ -64,8 +65,8 @@ ggplot(ht1, aes(x = fct_reorder(Entity, media), y = media,
   theme(legend.position = "none")
 
 ggplot(ht2, aes(x = Year, y = horas, group = Entity, col = Entity)) +
-  geom_line(size = 1.4) +
-  scale_color_manual(values = as.vector(alphabet(4))) +
+  geom_line(size = 1.6) +
+  scale_color_brewer(palette = "Set1") +
   labs(x = "Anos", y = "Tempo médio de trabalho (horas)",
        color = "Países") +
   theme_bw(base_size = 14) 

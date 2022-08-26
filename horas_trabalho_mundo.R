@@ -44,11 +44,10 @@ ht1 <- ht %>%
 ht2 <- ht %>%
   select(-Code) %>%
   rename(horas = Average.annual.working.hours.per.worker) %>%
-  filter(Entity %in% c("Angola", "Brazil", "China", "Russsia",
-                       "United States", "France", "Germany",
-                       "Ghana", "India", "Haiti", "Hungary", 
-                       "Iceland", "Israel", "Portugal", "Italy")) %>%
+  filter(Entity %in% c("United States", "France", "Germany",
+                       "Italy")) %>%
   view()
+glimpse(ht2)
 
 # Gráficos ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -66,7 +65,7 @@ ggplot(ht1, aes(x = fct_reorder(Entity, media), y = media,
 
 ggplot(ht2, aes(x = Year, y = horas, group = Entity, col = Entity)) +
   geom_line(size = 1.4) +
-  scale_color_manual(values = as.vector(alphabet(11))) +
+  scale_color_manual(values = as.vector(alphabet(4))) +
   labs(x = "Anos", y = "Tempo médio de trabalho (horas)",
        color = "Países") +
   theme_bw(base_size = 14) 
